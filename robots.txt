@@ -1,0 +1,8 @@
+# robots.txt — ATMS Accumen Techno Marketing Solution
+# https://accumentechno.github.io
+
+User-agent: *
+Allow: /
+
+# Point all crawlers to the sitemap
+Sitemap: https://accumentechno.github.io/sitemap.xml
