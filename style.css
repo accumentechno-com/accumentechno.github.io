@@ -1,18 +1,237 @@
-.nav-logo-img{
-  height:38px;
-  width:auto;
-  display:block;
-  flex-shrink:0;
-  transition:var(--t);
+/* ============================================ */
+/* NAVIGATION BAR - COMPLETE STYLES             */
+/* ============================================ */
+
+/* Nav Container */
+.nav {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background: rgba(6, 11, 20, 0.92);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  padding: 0 36px;
+  transition: all 0.35s ease;
 }
-.nav-logo:hover .nav-logo-img{
-  transform:scale(1.05);
+.nav.scrolled {
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
 }
-.nav-logo-name{
-  font-family:var(--font-head);
-  font-size:1.05rem;
-  font-weight:800;
-  color:var(--text);
-  letter-spacing:-0.01em;
-  white-space:nowrap;
+.nav-inner {
+  max-width: 1300px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 72px;
+  gap: 28px;
+}
+
+/* Logo Link */
+.nav-logo {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: all 0.35s ease;
+}
+.nav-logo:hover {
+  opacity: 0.9;
+}
+
+/* Logo Image */
+.nav-logo-img {
+  height: 42px;
+  width: auto;
+  display: block;
+  flex-shrink: 0;
+  border-radius: 8px;
+  transition: all 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  filter: drop-shadow(0 2px 8px rgba(79, 143, 255, 0.2));
+}
+.nav-logo:hover .nav-logo-img {
+  transform: scale(1.05);
+  filter: drop-shadow(0 4px 16px rgba(79, 143, 255, 0.4)) brightness(1.1);
+}
+
+/* Company Name */
+.nav-logo-name {
+  font-family: 'Syne', sans-serif;
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: #edf2f9;
+  letter-spacing: -0.02em;
+  white-space: nowrap;
+  line-height: 1;
+  transition: all 0.35s ease;
+}
+.nav-logo:hover .nav-logo-name {
+  color: #7aafff;
+}
+
+/* Nav Links */
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+.nav-links a {
+  padding: 9px 16px;
+  border-radius: 50px;
+  font-size: 0.84rem;
+  font-weight: 500;
+  color: #bcc8e0;
+  transition: all 0.35s ease;
+  text-decoration: none;
+}
+.nav-links a:hover,
+.nav-links a.active {
+  color: #edf2f9;
+  background: rgba(255, 255, 255, 0.05);
+}
+.nav-links a.nav-cta {
+  background: #4f8fff;
+  color: #fff;
+  font-weight: 700;
+  margin-left: 10px;
+  font-family: 'Syne', sans-serif;
+  box-shadow: 0 2px 16px rgba(79, 143, 255, 0.25);
+}
+.nav-links a.nav-cta:hover {
+  background: #2d6fdf;
+  box-shadow: 0 6px 24px rgba(79, 143, 255, 0.4);
+}
+
+/* Hamburger Menu Button */
+.nav-ham {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  width: 30px;
+  padding: 4px 0;
+  z-index: 1001;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+.nav-ham span {
+  height: 2.5px;
+  background: #edf2f9;
+  border-radius: 3px;
+  transition: all 0.35s ease;
+  transform-origin: center;
+}
+
+/* Mobile Menu */
+.nav-mobile {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 999;
+  background: rgba(6, 11, 20, 0.98);
+  backdrop-filter: blur(24px);
+  padding: 100px 36px 40px;
+  flex-direction: column;
+  gap: 8px;
+  overflow-y: auto;
+}
+.nav-mobile.open {
+  display: flex;
+}
+.nav-mobile a {
+  font-family: 'Syne', sans-serif;
+  font-size: 1.5rem;
+  font-weight: 700;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  padding: 18px 0;
+  color: #edf2f9;
+  text-decoration: none;
+  transition: all 0.35s ease;
+}
+.nav-mobile a:hover {
+  color: #4f8fff;
+  padding-left: 8px;
+}
+.nav-close {
+  position: absolute;
+  top: 24px;
+  right: 36px;
+  font-size: 2.5rem;
+  color: #bcc8e0;
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  border: none;
+  background: none;
+  cursor: pointer;
+  transition: all 0.35s ease;
+}
+.nav-close:hover {
+  color: #edf2f9;
+  background: rgba(255, 255, 255, 0.05);
+}
+
+/* ============================================ */
+/* RESPONSIVE BREAKPOINTS                       */
+/* ============================================ */
+
+@media (max-width: 1024px) {
+  .nav-logo-name {
+    font-size: 0.95rem;
+  }
+  .nav-logo-img {
+    height: 36px;
+  }
+  .nav-logo {
+    gap: 10px;
+  }
+}
+
+@media (max-width: 768px) {
+  .nav {
+    padding: 0 20px;
+  }
+  .nav-inner {
+    height: 64px;
+    gap: 16px;
+  }
+  .nav-links {
+    display: none;
+  }
+  .nav-ham {
+    display: flex;
+  }
+  .nav-logo-name {
+    font-size: 0.82rem;
+  }
+  .nav-logo-img {
+    height: 32px;
+    border-radius: 6px;
+  }
+  .nav-logo {
+    gap: 8px;
+  }
+}
+
+@media (max-width: 480px) {
+  .nav {
+    padding: 0 16px;
+  }
+  .nav-inner {
+    height: 60px;
+  }
+  .nav-logo-name {
+    font-size: 0.7rem;
+    letter-spacing: -0.01em;
+  }
+  .nav-logo-img {
+    height: 28px;
+  }
+  .nav-logo {
+    gap: 6px;
+  }
 }
